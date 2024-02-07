@@ -1,0 +1,75 @@
+#scroll-container {
+  position: relative;
+  width: 100vw;
+  height: 500vh; /* 100vh por cada página */
+  z-index: 2;
+ }
+ canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+ }
+ .content-page {
+  position: absolute;
+  left: 0;
+  width: 100vw;  /* 100% del ancho del viewport */
+  height: 100vh; /* 100% de la altura del viewport */
+  display: flex;
+  z-index: 2;
+  color: aliceblue;
+  }
+ #page0, #page1, #page2, #page3, #page4 {
+  position: absolute; /* O 'fixed', según lo necesites */
+  font-family: 'Kalnia', serif; /* Primera opción */
+  font-family: 'Noto Sans Buhid', sans-serif; /* Segunda opción */
+  font-family: 'Inria Sans', sans-serif; /* Última y por lo tanto se aplica */
+ }
+ /* Estilos específicos para h1 y p dentro de las páginas */
+ #page0 h1,
+ #page1 h1,
+ #page2 h2,
+ #page3 h2, #page3 p,
+ #page4 h2, #page4 p {
+ font-family: 'Bebas Neue', 'Inria Sans', 'Kalnia', 'Noto Sans Buhid', sans-serif; /* Define una cadena de fuentes para fallback */
+ }
+ #page0 {
+  text-align: center;
+  padding: 5em;
+  top: 85vh;
+  left: 1vw;
+  width: 50vw;  /* 50% del ancho del viewport */
+  height: 50vh; /* 50% de la altura del viewport */
+  font-size: 5vh;
+ }
+ #page1 {
+  top: 190vh;
+  left: 17vw; /* Empieza en la mitad del ancho del viewport */
+  width: 50vw;
+  height: 50vh;
+  font-size: 5vh;
+ }
+ #page2 {
+  text-align: center;
+  top: 265vh;
+  left: 6vw; /* Empieza en la mitad del ancho del viewport */
+  width: 50vw;
+  height: 50vh;
+  font-size: 5vh;
+ }
+ #page3 {
+  text-align: center;
+  top: 340vh; /* Empieza en la mitad de la altura del viewport */
+  left: 95vh;
+  width: 50vw;
+  height: 50vh;
+  font-size: 5vh;
+ }
+ #page4 {
+  top: 445vh;
+  left: 54vw;
+  width: 50vw;
+  height: 50vh;
+  font-size: 5vh;
+ }
+ 
