@@ -6,11 +6,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 gsap.registerPlugin(ScrollTrigger);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Crear un manager de carga y el elemento del contador de carga
+const manager = new THREE.LoadingManager();
+const contadorCarga = document.createElement('div');
+contadorCarga.id = 'contadorCarga';
+contadorCarga.innerText = 'Cargando... 0%';
+document.body.appendChild(contadorCarga);
 
+manager.onLoad = function () {
+    console.log('Carga completa');
+    contadorCarga.style.display = 'none'; // Oculta el contador cuando la carga finaliza
+};
+
+manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+    let percent = (itemsLoaded / itemsTotal) * 100;
+    contadorCarga.innerText = `Loading... ${Math.round(percent)}%`; // Actualiza el texto del contador
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Cargar el mapa HDR
-const rgbeLoader = new RGBELoader();
+const rgbeLoader = new RGBELoader(manager);
 rgbeLoader.load('hdr/fondo.hdr', function (texture) {
  texture.mapping = THREE.EquirectangularReflectionMapping;
  renderer.shadowMap.enabled = true
@@ -65,7 +83,7 @@ camera.lookAt(0, 0, 0);
 
 
 // Configuración de la luz
-const light = new THREE.SpotLight(0xc9bba5, 40, 70);
+const light = new THREE.SpotLight(0xc9bba5, 80, 70);
 light.position.set(-4, 4, 6);
 
 
@@ -105,7 +123,7 @@ scene.add(lookAtTarget);
 
 
 // Cargando el modelo
-const loader = new GLTFLoader();
+const loader = new GLTFLoader(manager);
 
 
 
