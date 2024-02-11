@@ -22,7 +22,7 @@ manager.onLoad = function () {
 
 manager.onProgress = function (url, itemsLoaded, itemsTotal) {
     let percent = (itemsLoaded / itemsTotal) * 100;
-    contadorCarga.innerText = `Loading... ${Math.round(percent)}%`; // Actualiza el texto del contador
+    contadorCarga.innerText = `${Math.round(percent)}%`; // Actualiza el texto del contador
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,7 +198,7 @@ const timeline = gsap.timeline({
    start: 'top top',
    end: 'bottom bottom',
    scrub: true,
-   markers: true
+   markers: false
  }
 });
 
@@ -268,7 +268,7 @@ start: `${(i * 100)}vh center`,
 end: `${((i + 1) * 100)}vh center`,
 onEnter: () => resaltarTexto(`#${page.id}`),
 onLeaveBack: () => resetearTexto(`#${page.id}`),
-markers: true // Para depuración
+markers: false // Para depuración
 });
 });
 
